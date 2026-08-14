@@ -59,23 +59,28 @@ fun App() {
     MaterialTheme(colorScheme = colors) {
         Scaffold(
             topBar = {
-                TopAppBar(
-                    title = {
-                        Column {
-                            Text("Семейный бюджет", fontWeight = FontWeight.Bold)
+                Surface(color = MaterialTheme.colorScheme.surface) {
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .statusBarsPadding()
+                            .heightIn(min = 64.dp)
+                            .padding(horizontal = 16.dp),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Column(Modifier.weight(1f)) {
+                            Text("Семейный бюджет", fontWeight = FontWeight.Bold, fontSize = 20.sp)
                             Text(
                                 "8.1 PRO • smart finance",
                                 fontSize = 11.sp,
                                 color = MaterialTheme.colorScheme.onSurfaceVariant
                             )
                         }
-                    },
-                    actions = {
                         IconButton(onClick = { settings = true }) {
                             Icon(Icons.Rounded.Settings, contentDescription = "Настройки")
                         }
                     }
-                )
+                }
             },
             bottomBar = {
                 NavigationBar {
